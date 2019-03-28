@@ -1,3 +1,16 @@
 <resources>
+
     <string name="app_name">Foodis</string>
+
+    <!-- Bottom Navigation View-->
+    <string name="bottom_nav_dishes">Dishes</string>
+    <string name="bottom_nav_search">Search</string>
+    <string name="bottom_nav_my_orders">My Orders</string>
+    <string name="bottom_nav_favorites">Favorites</string>
+    <string name="bottom_nav_seller">Seller</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
