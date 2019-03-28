@@ -17,6 +17,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import com.foodis.app.AddDish.AddDishActivity;
 import com.foodis.app.fragments.DishesFragment;
 import com.foodis.app.fragments.FavoritesFragment;
 import com.foodis.app.fragments.MyOrdersFragment;

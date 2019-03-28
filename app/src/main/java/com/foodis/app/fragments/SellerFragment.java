@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.foodis.app.AddDish.AddDishActivity;
 import com.foodis.app.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -134,6 +135,7 @@ public class SellerFragment extends Fragment {
 
     private void addNewDish(){
         Toast.makeText(this.getContext(), "Added new dish", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), AddDishActivity.class));
     }
 
     @Override
