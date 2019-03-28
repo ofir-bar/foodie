@@ -7,51 +7,55 @@
     android:layout_height="match_parent"
     tools:context=".fragments.DishesFragment">
 
+    <ImageButton
+        android:id="@+id/edit_city_value"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
     <TextView
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="Logout"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/seller_add_dish"
+<!--
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:clickable="true"
-        android:src="@drawable/ic_seller_add_dish"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/seller_hi_username_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="26dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Hi,"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/logout"
-        app:layout_constraintEnd_toStartOf="@+id/logout"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/logout" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/seller_username_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Default"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/seller_hi_username_text"
-        app:layout_constraintStart_toEndOf="@+id/seller_hi_username_text"
-        app:layout_constraintTop_toTopOf="@+id/seller_hi_username_text" />
+        <TextView
+            android:id="@+id/hi_username_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hi,"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/seller_username_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Default"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+-->
 
     <TextView
         android:id="@+id/seller_my_orders"
@@ -64,6 +68,70 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidline_25_percent_from_top" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/seller_city_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="City:" />
+
+        <TextView
+            android:id="@+id/seller_city_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tel Aviv" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+
+        <TextView
+            android:id="@+id/seller_address_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address:"
+            tools:layout_editor_absoluteX="197dp"
+            tools:layout_editor_absoluteY="439dp" />
+
+        <TextView
+            android:id="@+id/seller_address_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dereh Hashalom 126"
+            tools:layout_editor_absoluteX="139dp"
+            tools:layout_editor_absoluteY="356dp" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/seller_add_dish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:clickable="true"
+        android:src="@drawable/ic_seller_add_dish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <android.support.constraint.Guideline
         android:id="@+id/guidline_25_percent_from_top"
         android:layout_width="wrap_content"
@@ -71,11 +139,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.25" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidline_25_percent_from_bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+    <ImageButton
+        android:id="@+id/edit_address_value"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout3" />
 
 </android.support.constraint.ConstraintLayout>

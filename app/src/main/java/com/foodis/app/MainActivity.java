@@ -26,7 +26,7 @@ import com.foodis.app.fragments.SellerFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.foodis.app.SellerFragment.RC_SIGN_IN;
+import static com.foodis.app.fragments.SellerFragment.RC_SIGN_IN;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private List<Fragment> fragmentsInMemory = new ArrayList<>();
     private Fragment defaultFragment;
+    public FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this, user.getUid(), Toast.LENGTH_SHORT).show();
 
             } else {

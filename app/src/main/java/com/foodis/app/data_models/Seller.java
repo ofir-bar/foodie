@@ -5,7 +5,6 @@ public class Seller {
     private String name;
     private String city;
     private String address;
-    private int addresNumber;
 
     public Seller(){}
 
@@ -13,7 +12,6 @@ public class Seller {
         this.name = name;
         this.city = city;
         this.address = address;
-        this.addresNumber = addresNumber;
     }
 
     public String getName() {
@@ -40,11 +38,4 @@ public class Seller {
         this.address = address;
     }
 
-    public int getAddresNumber() {
-        return addresNumber;
-    }
-
-    public void setAddresNumber(int addresNumber) {
-        this.addresNumber = addresNumber;
-    }
 }

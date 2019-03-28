@@ -1,21 +1,26 @@
 package com.foodis.app.fragments;
 
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
+import com.foodis.app.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +32,8 @@ import static android.app.Activity.RESULT_OK;
 
 import com.foodis.app.R;
 
+import org.w3c.dom.Text;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,6 +43,7 @@ public class SellerFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private TextView logout;
+    private TextView sellerUsernameValue;
     private FloatingActionButton addDish;
     public static final int RC_SIGN_IN = 1;
 
@@ -65,14 +73,13 @@ public class SellerFragment extends Fragment {
                         });
             }
         });
-
+        addDish = v.findViewById(R.id.seller_add_dish);
         addDish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addNewDish();
             }
         });
-
 
 
         return v;
@@ -114,7 +121,6 @@ public class SellerFragment extends Fragment {
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 
-
     public void onPause(){
         Log.d(TAG, "onPause");
         super.onPause();
@@ -128,6 +134,11 @@ public class SellerFragment extends Fragment {
 
     private void addNewDish(){
         Toast.makeText(this.getContext(), "Added new dish", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
 
