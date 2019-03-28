@@ -1,4 +1,4 @@
-package com.foodis.app;
+package com.foodis.app.fragments;
 
 
 import android.content.Context;
@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 
 import static android.app.Activity.RESULT_OK;
+
+import com.foodis.app.R;
 
 
 /**
