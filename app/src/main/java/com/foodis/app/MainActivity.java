@@ -11,6 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.foodis.app.fragments.DishesFragment;
+import com.foodis.app.fragments.FavoritesFragment;
+import com.foodis.app.fragments.MyOrdersFragment;
+import com.foodis.app.fragments.SearchFragment;
+import com.foodis.app.fragments.SellerFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
