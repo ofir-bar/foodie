@@ -11,20 +11,20 @@ public class Dish {
     private String imageUrl;
     private double price;
     private int pieces;
-    private int amount;
+    private int weight;
     private String[] mayContain; // Not sure, may change
     private String[] category;
     private Bitmap image;
 
     public Dish(){}
 
-    public Dish(String name, String details, String imageUrl, double price, int pieces, int amount, String[] mayContain, String[] category, Bitmap image) {
+    public Dish(String name, String details, String imageUrl, double price, int pieces, int weight, String[] mayContain, String[] category, Bitmap image) {
         this.name = name;
         this.details = details;
         this.imageUrl = imageUrl;
         this.price = price;
         this.pieces = pieces;
-        this.amount = amount;
+        this.weight = weight;
         this.mayContain = mayContain;
         this.category = category;
         this.image = FirebaseStorage.loadImage(imageUrl);
@@ -62,12 +62,12 @@ public class Dish {
         this.pieces = pieces;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     public String[] getMayContain() {
