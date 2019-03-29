@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ public class DetailedDishActivity extends AppCompatActivity {
     public static final String EXTRA_PRICE ="EXTRA_PRICE";
     public static final String EXTRA_WEIGHT ="EXTRA_WEIGHT";
     public static final String EXTRA_IMAGE ="EXTRA_IMAGE";
-
+    TextView dish_price_value;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +32,10 @@ public class DetailedDishActivity extends AppCompatActivity {
         String DishDetailsData =(String)getIntent().getExtras().get(EXTRA_DETAILS);
         int DishPiecesData = getIntent().getIntExtra(EXTRA_PIECES,0);
 
-       // String DishPriceData =(String)getIntent().getExtras().get(EXTRA_PRICE);
+        int DishPriceData =getIntent().getIntExtra(EXTRA_PRICE,0);
         int DishWeightData =getIntent().getIntExtra(EXTRA_WEIGHT, 0);
+
+        dish_price_value = findViewById(R.id.dish_price_value);
 
         String url =(String)getIntent().getExtras().get("url");
 
@@ -77,6 +80,8 @@ public class DetailedDishActivity extends AppCompatActivity {
                 Toast.makeText(DetailedDishActivity.this, "Checked out successfully", Toast.LENGTH_SHORT).show();
             }
         });
+
+        dish_price_value.setText(DishPriceData+"");
 
     }
 
