@@ -1,4 +1,4 @@
-# Foodie - buy & sell homemade food
+# Foodie - Buy and Sell Delicious Home-made Food
 
 ## Foodie is a native Android app written in Java. This project is made during the AndroidAcademyTLV Hackathon
 
@@ -13,7 +13,13 @@ As a buyer, you can:
 - You don't need to register a user
 
 # Development Tools & Libraries used
-
+- EasyImage - to upload images from gallery & take pictures of food
+- Firebase: 
+- RealtimeDB
+- Storage
+- Authentication
+- Glide (URL to bitmap and vice-versa)
+- Picasso
 
 # Screenshots
 
