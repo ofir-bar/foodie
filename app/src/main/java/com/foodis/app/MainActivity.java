@@ -97,11 +97,23 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if(getSupportFragmentManager().getFragments().isEmpty()){
+            Fragment main = new DishesFragment();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            ft.replace(R.id.main_activity_fragment, main);
+            ft.commit();
+        }
+
     }
 
     protected void onPause() {
         super.onPause();
-
+        if(!getSupportFragmentManager().getFragments().isEmpty()){
+            Fragment main = new DishesFragment();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            ft.remove(main);
+            ft.commit();
+        }
     }
 
     @Override
