@@ -5,8 +5,7 @@
     android:id="@+id/fragment_seller"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.DishesFragment"
-    android:background="@drawable/background_gradient">
+    tools:context=".fragments.DishesFragment">
 
     <ImageButton
         android:id="@+id/edit_city_value"
@@ -20,7 +19,6 @@
 
     <TextView
         android:id="@+id/logout"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -42,7 +40,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/hi_username_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,7 +47,6 @@
             android:textSize="16sp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/seller_username_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +56,6 @@
     </LinearLayout>
 
     <TextView
-        android:textColor="@color/white"
         android:id="@+id/seller_my_orders"
         android:textSize="18sp"
         android:layout_width="wrap_content"
@@ -82,14 +77,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/seller_city_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="City:" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/seller_city_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,7 +102,6 @@
 
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/seller_address_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,7 +110,6 @@
             tools:layout_editor_absoluteY="439dp" />
 
         <TextView
-            android:textColor="@color/white"
             android:id="@+id/seller_address_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onPause() {
         super.onPause();
-        removeAllFragmentsFromMemory();
 
     }
 
@@ -115,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         Log.d(TAG, "onRestart");
-
 
     }
 
@@ -151,18 +149,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-        }
-    }
-
-    private void removeAllFragmentsFromMemory() {
-        //removing all fragments in memory
-        if (!fragmentsInMemory.isEmpty()) {
-            Log.d(TAG, "Removing all Active Fragments");
-            FragmentTransaction removeAllFragments = fragmentManager.beginTransaction();
-            for (Fragment fragment : fragmentsInMemory) {
-                removeAllFragments.remove(fragment);
-            }
-            removeAllFragments.commit();
         }
     }
 
