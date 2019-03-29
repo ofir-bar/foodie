@@ -1,18 +1,33 @@
 package com.foodis.app.AddDish;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 
 import com.foodis.app.R;
+
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FoodCategoryFragment extends Fragment {
 
+    GridView gridView;
+    AdapterCategories adapterCategories;
 
     public FoodCategoryFragment() {
         // Required empty public constructor
@@ -23,8 +38,60 @@ public class FoodCategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_category, container, false);
+        return inflater.inflate(R.layout.fragment_categories, container, false);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+//        for (int i = 0; i < arrBoolean.length; i++) {
+//            arrBoolean[i] = false;
+//        }
+//
+//        ImageView imageView1 = view.findViewById(R.id.imageView1);
+//        LinearLayout tableCell1 = view.findViewById(R.id.tableCell1);
+//
+//        imageView1.setOnClickListener(v -> {
+//            if(arrBoolean[0]){
+//                arrBoolean[0]=false;
+//                tableCell1.setBackgroundResource(R.color.white);
+//            }else{
+//                arrBoolean[0] = true;
+//                tableCell1.setBackgroundResource(R.drawable.rec_background_with_orange_border);
+//            }
+//        });
+
+
+        gridView = view.findViewById(R.id.listvieww);
+
+        adapterCategories = new AdapterCategories(getActivity());
+        gridView.setAdapter(adapterCategories);
+
+        adapterCategories.add(new ObjectDishCategory("italian", R.drawable.pizza, false));
+        adapterCategories.add(new ObjectDishCategory("Thai", R.drawable.noodles, false));
+        adapterCategories.add(new ObjectDishCategory("Japanese", R.drawable.sushi, false));
+        adapterCategories.add(new ObjectDishCategory("Fish", R.drawable.fish, false));
+        adapterCategories.add(new ObjectDishCategory("Meat", R.drawable.steak, false));
+        adapterCategories.add(new ObjectDishCategory("Seafood", R.drawable.shrimp, false));
+        adapterCategories.add(new ObjectDishCategory("Traditional", R.drawable.turkey, false));
+        adapterCategories.add(new ObjectDishCategory("Vegeterian", R.drawable.salad, false));
+        adapterCategories.add(new ObjectDishCategory("Cakes", R.drawable.cake, false));
+        adapterCategories.add(new ObjectDishCategory("Cupcakes", R.drawable.cupcake, false));
+        adapterCategories.add(new ObjectDishCategory("Breads", R.drawable.bread, false));
+
+        gridView.setOnItemClickListener((parent, view1, position, id) -> {
+            if (adapterCategories.getItem(position).state) {
+                adapterCategories.getItem(position).state = false;
+                adapterCategories.notifyDataSetChanged();
+            } else {
+                adapterCategories.getItem(position).state = true;
+                adapterCategories.notifyDataSetChanged();
+
+            }
+
+
+        });
+    }
 }
 

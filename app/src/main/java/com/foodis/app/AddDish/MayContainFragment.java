@@ -23,7 +23,7 @@ public class MayContainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_food_category, container, false);
+        return inflater.inflate(R.layout.fragment_may_contain, container, false);
     }
 
 }
