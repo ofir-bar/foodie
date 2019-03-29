@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class Splash extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 2000;
+    private static final int SPLASH_DELAY = 2500;
 
     private final Handler mHandler   = new Handler();
     private final Launcher mLauncher = new Launcher();
