@@ -68,40 +68,6 @@ public class DishesFragment extends Fragment {
     }
 
     private void loadDishes() {
-        // TODO: 28-Mar-19 Load from FB all the dishes from the sellers
-        // Add in dishList
-       /* Map<String, Seller> tempSellersMap = new HashMap<>();
-        for(int i = 0; i < 10; i++){
-            List<String> strList = new ArrayList<>();
-            strList.add("Yeeyy");
-            strList.add("Koko");
-            Bitmap image = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
-//            image.eraseColor(android.graphics.Color.GREEN);
-
-            Map<String, Dish> tempDishMap = new HashMap<>();
-            for(int j = 0; j < 5; j++){
-                Dish dish = new Dish("Meaaaat" + j, "Ton of meat", "uri", 2, 5, 10, strList, strList, image);
-                tempDishMap.put(dish.getName(), dish);
-
-            }
-
-            Seller seller = new Seller("Groot " + i, "Koyko", "Somewhere far far away", tempDishMap);
-
-            tempSellersMap.put(seller.name, seller);
-        }
-
-        FirebaseDB.getSellersRef().setValue(tempSellersMap);*/
-       // Add Dish
-        /*List<String> strList = new ArrayList<>();
-        Bitmap image = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
-        strList.add("Yeeyy");
-        strList.add("Koko");
-        Dish dish = new Dish("Veg", "Ton of meat", "uri", 2, 5, 10, strList, strList, image);
-        HashMap<String, Object> stringDishHashMap = new HashMap<>();
-        stringDishHashMap.put(dish.getName(), dish);
-        FirebaseDB.getSellersRef().child("Groot 0").child("dishList").updateChildren(stringDishHashMap);
-*/
-
         FirebaseDB.getSellersRef().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
