@@ -1,5 +1,6 @@
 package com.foodis.app;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,12 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.foodis.app.data_models.Dish;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder> {
 
     private List<Dish> dishList;
+    private Context mContext;
 
     public static class DishViewHolder extends RecyclerView.ViewHolder{
 
@@ -24,12 +28,13 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
         private ImageView ivDishImage;
         private TextView tvDishName;
 
-
         public DishViewHolder(@NonNull View itemView) {
             super(itemView);
-
             ivDishImage = itemView.findViewById(R.id.iv_dish_image);
             tvDishName = itemView.findViewById(R.id.tv_dish_name);
+
+
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -39,6 +44,7 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
                     intent.putExtra(DetailedDishActivity.EXTRA_PIECES, dish.getPieces());
                     intent.putExtra(DetailedDishActivity.EXTRA_PRICE, dish.getPrice());
                     intent.putExtra(DetailedDishActivity.EXTRA_WEIGHT, dish.getWeight());
+                    intent.putExtra("url", dish.getImageUrl());
 
                     //BitmapDrawable drawable = (BitmapDrawable) ivDishImage.getDrawable();
                     //Bitmap bitmap = drawable.getBitmap();
@@ -52,8 +58,15 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
             });
         }
 
-        public void setDishData(Dish dish){
+        public void setDishData(Dish dish, Context mContext){
             this.dish = dish;
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageRef = storage.getReference();
+            StorageReference islandRef = storageRef.child(dish.getImageUrl());
+
+
+            GlideApp.with(mContext).load(islandRef).into(ivDishImage);
+
 
 //            ivDishImage.setImageBitmap(dish.());
             tvDishName.setText(dish.getName());
@@ -61,8 +74,9 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
 
     }
 
-    public DishAdapter(List<Dish> dishList) {
+    public DishAdapter(List<Dish> dishList, Context mContext) {
         this.dishList = dishList;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -75,7 +89,7 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DishViewHolder dishViewHolder, int i) {
-        dishViewHolder.setDishData(dishList.get(i));
+        dishViewHolder.setDishData(dishList.get(i), mContext);
     }
 
     @Override

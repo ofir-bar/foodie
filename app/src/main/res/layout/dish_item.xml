@@ -31,19 +31,20 @@ android:background="@color/colorAccent">
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.0"
+            card_view:layout_constraintVertical_bias="1.0"
             card_view:srcCompat="@color/ForestGreen" />
 
         <TextView
             android:id="@+id/tv_dish_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
             android:text="Some cool text"
-            android:textColor="@color/black"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>

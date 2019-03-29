@@ -29,15 +29,11 @@ import java.util.List;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 
 public class AddDishActivity extends AppCompatActivity {
@@ -105,8 +101,8 @@ public class AddDishActivity extends AppCompatActivity {
                 Bitmap myBitmap = BitmapFactory.decodeFile(imagesFiles.get(0).getAbsolutePath());
 
 
-                StorageReference mountainsRef = mStorageRef.child(userUid).child("product " + number_of_next_dish + ".jpg");
-                dish.setImageUrl(userUid + "/product " + number_of_next_dish + ".jpg");
+                StorageReference mountainsRef = mStorageRef.child(userUid).child("product" + number_of_next_dish + ".jpg");
+                dish.setImageUrl(userUid + "/product" + number_of_next_dish + ".jpg");
 
                 for(Fragment fragment: getSupportFragmentManager().getFragments()){
                     if(fragment instanceof AddPhotoFragment){
