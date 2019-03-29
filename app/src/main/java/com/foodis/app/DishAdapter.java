@@ -1,8 +1,6 @@
 package com.foodis.app;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 
 import com.foodis.app.data_models.Dish;
 
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder> {
@@ -75,6 +72,7 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
     @Override
     public DishViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v =  LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dish_item, viewGroup, false);
+
         return new DishViewHolder(v);
     }
 

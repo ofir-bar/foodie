@@ -37,14 +37,10 @@ public class FirebaseDB {
         getSellersRef().child(name).updateChildren(tempProfileMap);
     }
 
-
     public static void addDish(String userName, Dish dish){
         Map<String, Object> tempDishMap = new HashMap<>();
         tempDishMap.put(dish.getName(), dish);
         FirebaseDB.getSellersRef().child(userName).child("dishList").updateChildren(tempDishMap);
     }
-
-
-
 
 }
