@@ -5,7 +5,21 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".fragments.DishesFragment"
-android:id="@+id/fragment_dishes">
+android:id="@+id/fragment_add_photo">
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/Orange"
+        android:text="next "
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"
@@ -35,14 +49,14 @@ android:id="@+id/fragment_dishes">
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextDishName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:ems="10"
+            android:hint="dish name"
             android:inputType="textPersonName"
-            android:text="dish name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +111,12 @@ android:id="@+id/fragment_dishes">
                     android:src="@drawable/plus_icon" />
 
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
         </RelativeLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -104,12 +124,13 @@ android:id="@+id/fragment_dishes">
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rel_photo">
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/edit_dish_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"

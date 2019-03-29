@@ -50,6 +50,8 @@ public class SellerFragment extends Fragment {
     private TextView sellerAddressValue;
     private FloatingActionButton addDish;
     public static final int RC_SIGN_IN = 1;
+    String sellerName;
+    String sellerUid;
 
     public SellerFragment() {
         // Required empty public constructor
@@ -130,6 +132,8 @@ public class SellerFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Seller seller = dataSnapshot.getValue(Seller.class);
+                sellerName = user.getDisplayName();
+                sellerUid = user.getUid();
                 if(seller == null) return;
 
                 sellerAddressValue.setText(seller.address);
@@ -164,7 +168,12 @@ public class SellerFragment extends Fragment {
 
     private void addNewDish(){
         Toast.makeText(this.getContext(), "Added new dish", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(getActivity(), AddDishActivity.class));
+        Intent intent = new Intent(getActivity(), AddDishActivity.class);
+        intent.putExtra("numOfNextDish", 4);
+        intent.putExtra("userUid", sellerUid);
+        intent.putExtra("userName", sellerName);
+        //////
+        startActivity(intent);
     }
 
 //    @Override

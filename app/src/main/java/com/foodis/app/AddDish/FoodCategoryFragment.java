@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +18,11 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.foodis.app.FirebaseDB;
 import com.foodis.app.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
@@ -28,6 +33,7 @@ public class FoodCategoryFragment extends Fragment {
 
     GridView gridView;
     AdapterCategories adapterCategories;
+    Button next_button;
 
     public FoodCategoryFragment() {
         // Required empty public constructor
@@ -44,7 +50,7 @@ public class FoodCategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        next_button = view.findViewById(R.id.next_button);
 //        for (int i = 0; i < arrBoolean.length; i++) {
 //            arrBoolean[i] = false;
 //        }
@@ -87,8 +93,23 @@ public class FoodCategoryFragment extends Fragment {
             } else {
                 adapterCategories.getItem(position).state = true;
                 adapterCategories.notifyDataSetChanged();
-
             }
+        });
+
+        next_button.setOnClickListener(v -> {
+            List listOfChosen = new ArrayList();
+            for (int i = 0; i < adapterCategories.getCount(); i++) {
+                if (adapterCategories.getItem(i).state){
+                    listOfChosen.add(adapterCategories.getItem(i).name);
+                }
+            }
+            ((AddDishActivity) this.getActivity()).dish.setCategory(listOfChosen);
+
+            String userName = ((AddDishActivity) this.getActivity()).userName;
+            FirebaseDB.addDish(userName, ((AddDishActivity) this.getActivity()).dish);
+
+            ((AddDishActivity) this.getActivity()).nextFragment(3);
+
 
 
         });

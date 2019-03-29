@@ -2,18 +2,34 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragment_dishes"
+    android:id="@+id/fragment_by_grams"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.DishesFragment">
 
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="@color/Orange"
+        android:text="next "
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
+        android:id="@+id/lin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
+
 
         <com.foodis.app.CustomTextViews.TextViewFontLeelawdeeBold
             android:id="@+id/textViewFontLeelawdeeBold"
@@ -77,8 +93,7 @@
             android:id="@+id/frameAmountEditTexts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:visibility="gone">
+            android:layout_gravity="center_horizontal">
 
             <LinearLayout
                 android:id="@+id/lin_pieces"
@@ -88,13 +103,13 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lin_buttons">
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/editTextPieces"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -111,7 +126,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="40dp"
                 android:orientation="horizontal"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lin_buttons">
@@ -144,6 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
             android:orientation="horizontal"
             app:layout_constraintLeft_toLeftOf="@+id/textTitlePrice"
             app:layout_constraintTop_toBottomOf="@+id/textTitlePrice">

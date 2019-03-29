@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -25,6 +26,8 @@ public class ByGramsOrByPiecesFragment extends Fragment {
     LinearLayout linByGrams;
     LinearLayout lin_pieces;
     int  btnChooseState = 0;
+    Button next_button;
+    EditText editTextPieces, editText_grams;
 
     public ByGramsOrByPiecesFragment() {
         // Required empty public constructor
@@ -48,6 +51,9 @@ public class ByGramsOrByPiecesFragment extends Fragment {
         textByPieces = view.findViewById(R.id.textByPieces);
         linByGrams = view.findViewById(R.id.lin_grams);
         lin_pieces = view.findViewById(R.id.lin_pieces);
+        next_button = view.findViewById(R.id.next_button);
+        editTextPieces = view.findViewById(R.id.editTextPieces);
+        editText_grams = view.findViewById(R.id.editText_grams);
 
         btnByGrams.setOnClickListener(v -> {
             set_by_grams();
@@ -55,6 +61,25 @@ public class ByGramsOrByPiecesFragment extends Fragment {
 
         btnByPieces.setOnClickListener(v -> {
             set_by_pieces();
+        });
+
+        next_button.setOnClickListener(v -> {
+            if(editText_grams.getText().toString().equals("")){
+                ((AddDishActivity) this.getActivity()).dish.setWeight(0);
+            }else{
+                ((AddDishActivity) this.getActivity()).dish.setWeight(Integer.parseInt(editText_grams.getText().toString()));
+            }
+
+            if(editTextPieces.getText().toString().equals("")){
+                ((AddDishActivity) this.getActivity()).dish.setPieces(0);
+            }else{
+                ((AddDishActivity) this.getActivity()).dish.setPieces(Integer.parseInt(editTextPieces.getText().toString()));
+            }
+
+
+
+            ((AddDishActivity) this.getActivity()).nextFragment(2);
+
         });
 
     }
