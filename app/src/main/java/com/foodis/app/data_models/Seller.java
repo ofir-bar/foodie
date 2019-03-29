@@ -1,7 +1,5 @@
 package com.foodis.app.data_models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class Seller {
@@ -20,7 +18,7 @@ public class Seller {
         this.dishList = dishList;
     }
 
-    public String getName() {
+   /* public String getName() {
         return name;
     }
 
@@ -42,13 +40,6 @@ public class Seller {
 
     public void setAddress(String address) {
         this.address = address;
-    }
+    }*/
 
-    public Map<String, Dish> getDishList() {
-        return dishList;
-    }
-
-    public void setDishList(Map<String, Dish> dishList) {
-        this.dishList = dishList;
-    }
 }

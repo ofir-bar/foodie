@@ -30,11 +30,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView3"
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/imageView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I AM MAIN ACTIVITY LOLOLOLOL" />
+            app:srcCompat="@drawable/icon" />
     </FrameLayout>
 
 

@@ -27,7 +27,6 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<!--
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
@@ -55,7 +54,6 @@
             android:textSize="16sp" />
 
     </LinearLayout>
--->
 
     <TextView
         android:id="@+id/seller_my_orders"

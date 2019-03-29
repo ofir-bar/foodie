@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.IdpResponse;
+import com.foodis.app.data_models.Seller;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,6 +26,7 @@ import com.foodis.app.fragments.SearchFragment;
 import com.foodis.app.fragments.SellerFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.foodis.app.fragments.SellerFragment.RC_SIGN_IN;
@@ -43,15 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setDishesFragmentInFrontScreen();
-        // TODO: Avoid making the same fragment twice
-//
-//        defaultFragment = new DishesFragment();
-//        if(!fragmentsInMemory.contains(defaultFragment)){
-//            fragmentsInMemory.add(defaultFragment);
-//        }
-
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -85,11 +78,11 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         // We store all active Fragments in a list, to avoid starting the same Fragment twice
-                        if(!fragmentsInMemory.contains(selectedBottomNavFragment)){
+                        if (!fragmentsInMemory.contains(selectedBottomNavFragment)) {
                             fragmentsInMemory.add(selectedBottomNavFragment);
                         }
 
-                        if(selectedBottomNavFragment != null){
+                        if (selectedBottomNavFragment != null) {
                             FragmentTransaction ft = fragmentManager.beginTransaction();
                             ft.replace(R.id.main_activity_fragment, selectedBottomNavFragment);
                             ft.commit();
@@ -104,10 +97,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setDishesFragmentInFrontScreen();
     }
 
-    protected void onPause(){
+    protected void onPause() {
         super.onPause();
         removeAllFragmentsFromMemory();
 
@@ -116,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG,"onDestroy");
+        Log.d(TAG, "onDestroy");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG,"onRestart");
+        Log.d(TAG, "onRestart");
 
 
     }
@@ -131,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == RC_SIGN_IN) {
+        if (true/*requestCode == RC_SIGN_IN*/) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
 
             if (resultCode == RESULT_OK) {
@@ -139,42 +131,35 @@ public class MainActivity extends AppCompatActivity {
                 user = FirebaseAuth.getInstance().getCurrentUser();
                 Toast.makeText(this, user.getUid(), Toast.LENGTH_SHORT).show();
 
-            } else {
+                // Add user to Firebase Database
+                FirebaseDB.setSellerProfile(new Seller(user.getDisplayName(), "", "", new HashMap<>()));
 
-                if (response == null){
-                    setDishesFragmentInFrontScreen();
-                }
-                else {
-                    try{
-                        Toast.makeText(this, response.getError().getErrorCode(), Toast.LENGTH_SHORT).show();
-                    }catch (NullPointerException e){
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                for (Fragment fragment: fragmentsInMemory) {
+                    if (fragment instanceof SellerFragment) {
+                        ((SellerFragment)fragment).loadUserData(user);
                     }
                 }
 
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+            } else {
+
+                if (response == null) {
+                } else {
+                    try {
+                        Toast.makeText(this, response.getError().getErrorCode(), Toast.LENGTH_SHORT).show();
+                    } catch (NullPointerException e) {
+                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         }
     }
 
-    private void setDishesFragmentInFrontScreen(){
-        if(fragmentsInMemory.isEmpty()){
-            Fragment defaultFragment = new DishesFragment();
-            FragmentTransaction defaultFragmentTransaction = fragmentManager.beginTransaction();
-            defaultFragmentTransaction.add(R.id.main_activity_fragment, defaultFragment);
-            defaultFragmentTransaction.commit();
-        }
-    }
-
-    private void removeAllFragmentsFromMemory(){
+    private void removeAllFragmentsFromMemory() {
         //removing all fragments in memory
-        if(!fragmentsInMemory.isEmpty()){
-            Log.d(TAG,"Removing all Active Fragments");
+        if (!fragmentsInMemory.isEmpty()) {
+            Log.d(TAG, "Removing all Active Fragments");
             FragmentTransaction removeAllFragments = fragmentManager.beginTransaction();
-            for(Fragment fragment:fragmentsInMemory){
+            for (Fragment fragment : fragmentsInMemory) {
                 removeAllFragments.remove(fragment);
             }
             removeAllFragments.commit();

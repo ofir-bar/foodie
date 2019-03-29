@@ -10,18 +10,19 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.firebase.ui.auth.IdpResponse;
 import com.foodis.app.AddDish.AddDishActivity;
+import com.foodis.app.FirebaseDB;
 import com.foodis.app.MainActivity;
+import com.foodis.app.data_models.Seller;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,11 +30,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 
-import static android.app.Activity.RESULT_OK;
 
 import com.foodis.app.R;
-
-import org.w3c.dom.Text;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -45,6 +46,8 @@ public class SellerFragment extends Fragment {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     private TextView logout;
     private TextView sellerUsernameValue;
+    private TextView sellerCityValue;
+    private TextView sellerAddressValue;
     private FloatingActionButton addDish;
     public static final int RC_SIGN_IN = 1;
 
@@ -59,6 +62,9 @@ public class SellerFragment extends Fragment {
         setupAuthentication(inflater.getContext().getApplicationContext());
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_seller, container, false);
+
+        sellerAddressValue = v.findViewById(R.id.seller_address_value);
+        sellerCityValue = v.findViewById(R.id.seller_city_value);
 
         logout = v.findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +87,8 @@ public class SellerFragment extends Fragment {
                 addNewDish();
             }
         });
+
+
 
 
         return v;
@@ -115,6 +123,27 @@ public class SellerFragment extends Fragment {
         };
     }
 
+    public void loadUserData(FirebaseUser user){
+        if(user == null || TextUtils.isEmpty(user.getDisplayName())) return;
+
+        FirebaseDB.getSellersRef().child(user.getDisplayName()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Seller seller = dataSnapshot.getValue(Seller.class);
+                if(seller == null) return;
+
+                sellerAddressValue.setText(seller.address);
+                sellerCityValue.setText(seller.city);
+                sellerUsernameValue.setText(seller.name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 
     public void onResume(){
         Log.d(TAG, "onResume");
@@ -138,10 +167,10 @@ public class SellerFragment extends Fragment {
         startActivity(new Intent(getActivity(), AddDishActivity.class));
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+//    @Override
+////    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+////        super.onActivityResult(requestCode, resultCode, data);
+////    }
 
 
 }

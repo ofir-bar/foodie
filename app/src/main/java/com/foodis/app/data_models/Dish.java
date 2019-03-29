@@ -1,8 +1,7 @@
 package com.foodis.app.data_models;
 
-import android.graphics.Bitmap;
 
-import com.foodis.app.FirebaseStorage;
+import java.util.List;
 
 public class Dish {
 
@@ -12,13 +11,12 @@ public class Dish {
     private double price;
     private int pieces;
     private int weight;
-    private String[] mayContain; // Not sure, may change
-    private String[] category;
-    private Bitmap image;
+    private List<String> mayContain;
+    private List<String> category;
 
     public Dish(){}
 
-    public Dish(String name, String details, String imageUrl, double price, int pieces, int weight, String[] mayContain, String[] category, Bitmap image) {
+    public Dish(String name, String details, String imageUrl, double price, int pieces, int weight, List<String> mayContain, List<String> category) {
         this.name = name;
         this.details = details;
         this.imageUrl = imageUrl;
@@ -27,7 +25,6 @@ public class Dish {
         this.weight = weight;
         this.mayContain = mayContain;
         this.category = category;
-        this.image = FirebaseStorage.loadImage(imageUrl);
     }
 
     public String getName() {
@@ -70,28 +67,20 @@ public class Dish {
         this.weight = weight;
     }
 
-    public String[] getMayContain() {
+    public List<String> getMayContain() {
         return mayContain;
     }
 
-    public void setMayContain(String[] mayContain) {
+    public void setMayContain(List<String> mayContain) {
         this.mayContain = mayContain;
     }
 
-    public String[] getCategory() {
+    public List<String> getCategory() {
         return category;
     }
 
-    public void setCategory(String[] category) {
+    public void setCategory(List<String> category) {
         this.category = category;
-    }
-
-    public Bitmap getImage() {
-        return image;
-    }
-
-    public void setImage(Bitmap image) {
-        this.image = image;
     }
 
     public String getImageUrl() {

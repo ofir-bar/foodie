@@ -61,7 +61,7 @@ public class DishesFragment extends Fragment {
         rc.addItemDecoration(dividerItemDecoration);
         rc.setAdapter(dishAdapter);
 
-//        loadDishes();
+        loadDishes();
 
         return rootView;
     }
@@ -69,15 +69,17 @@ public class DishesFragment extends Fragment {
     private void loadDishes() {
         // TODO: 28-Mar-19 Load from FB all the dishes from the sellers
         // Add in dishList
-        Map<String, Seller> tempSellersMap = new HashMap<>();
+       /* Map<String, Seller> tempSellersMap = new HashMap<>();
         for(int i = 0; i < 10; i++){
-            String[] strArr = {"koko", "seasam"};
+            List<String> strList = new ArrayList<>();
+            strList.add("Yeeyy");
+            strList.add("Koko");
             Bitmap image = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
 //            image.eraseColor(android.graphics.Color.GREEN);
 
             Map<String, Dish> tempDishMap = new HashMap<>();
             for(int j = 0; j < 5; j++){
-                Dish dish = new Dish("Meaaaat" + j, "Ton of meat", "uri", 2, 5, 10, strArr, strArr, image);
+                Dish dish = new Dish("Meaaaat" + j, "Ton of meat", "uri", 2, 5, 10, strList, strList, image);
                 tempDishMap.put(dish.getName(), dish);
 
             }
@@ -87,8 +89,18 @@ public class DishesFragment extends Fragment {
             tempSellersMap.put(seller.name, seller);
         }
 
-        FirebaseDB.getSellersRef().setValue(tempSellersMap);
-/*
+        FirebaseDB.getSellersRef().setValue(tempSellersMap);*/
+       // Add Dish
+        /*List<String> strList = new ArrayList<>();
+        Bitmap image = Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
+        strList.add("Yeeyy");
+        strList.add("Koko");
+        Dish dish = new Dish("Veg", "Ton of meat", "uri", 2, 5, 10, strList, strList, image);
+        HashMap<String, Object> stringDishHashMap = new HashMap<>();
+        stringDishHashMap.put(dish.getName(), dish);
+        FirebaseDB.getSellersRef().child("Groot 0").child("dishList").updateChildren(stringDishHashMap);
+*/
+
         FirebaseDB.getSellersRef().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -100,22 +112,23 @@ public class DishesFragment extends Fragment {
 
                 // Add all the dishes of each seller to the list to show the buyer
                 for(Seller seller: sellersList){
-                    if(seller.getDishList() == null || seller.getDishList().isEmpty()) continue;
-                    dishList.addAll(seller.getDishList());
+                    if(seller.dishList == null || seller.dishList.isEmpty()) continue;
+
+                    dishList.addAll(seller.dishList.values());
                 }
 
+                dishAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });*/
+        });
 
 
 
 
-        dishAdapter.notifyDataSetChanged();
     }
 
 }

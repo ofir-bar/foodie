@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddDish.AddDishActivity"></activity>
+        <activity android:name=".DetailedDishActivity"></activity>
+        <activity android:name=".AddDish.AddDishActivity" />
         <activity
             android:name=".Splash"
             android:label="@string/app_name"

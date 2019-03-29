@@ -1,5 +1,8 @@
 package com.foodis.app;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.foodis.app.data_models.Dish;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder> {
@@ -29,12 +33,35 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
 
             ivDishImage = itemView.findViewById(R.id.iv_dish_image);
             tvDishName = itemView.findViewById(R.id.tv_dish_name);
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+
+
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(), DetailedDishActivity.class);
+                    intent.putExtra(DetailedDishActivity.EXTRA_NAME, dish.getName());
+                    intent.putExtra(DetailedDishActivity.EXTRA_DETAILS, dish.getDetails());
+                    intent.putExtra(DetailedDishActivity.EXTRA_PIECES, dish.getPieces());
+                    intent.putExtra(DetailedDishActivity.EXTRA_PRICE, dish.getPrice());
+                    intent.putExtra(DetailedDishActivity.EXTRA_WEIGHT, dish.getWeight());
+
+                    //BitmapDrawable drawable = (BitmapDrawable) ivDishImage.getDrawable();
+                    //Bitmap bitmap = drawable.getBitmap();
+                    //ByteArrayOutputStream bs = new ByteArrayOutputStream();
+                    //bitmap.compress(Bitmap.CompressFormat.PNG, 50, bs);
+                    //intent.putExtra(DetailedDishActivity.EXTRA_IMAGE, bs.toByteArray());
+
+
+                    view.getContext().startActivity(intent);
+                }
+            });
         }
 
         public void setDishData(Dish dish){
             this.dish = dish;
 
-            ivDishImage.setImageBitmap(dish.getImage());
+//            ivDishImage.setImageBitmap(dish.());
             tvDishName.setText(dish.getName());
         }
 
