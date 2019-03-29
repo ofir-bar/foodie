@@ -67,6 +67,7 @@ public class SellerFragment extends Fragment {
 
         sellerAddressValue = v.findViewById(R.id.seller_address_value);
         sellerCityValue = v.findViewById(R.id.seller_city_value);
+        sellerUsernameValue = v.findViewById(R.id.seller_username_value);
 
         logout = v.findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +108,8 @@ public class SellerFragment extends Fragment {
                     // user is already signed in
                     Log.d(TAG,"User is signed in");
                     Toast.makeText(context, "Seller already signed in", Toast.LENGTH_SHORT).show();
+
+                    loadUserData(user);
                 }
                 else {
                     //user is signed out

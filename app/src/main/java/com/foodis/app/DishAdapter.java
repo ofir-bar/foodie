@@ -31,9 +31,6 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishViewHolder
             ivDishImage = itemView.findViewById(R.id.iv_dish_image);
             tvDishName = itemView.findViewById(R.id.tv_dish_name);
             itemView.setOnClickListener(new View.OnClickListener() {
-
-
-
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(view.getContext(), DetailedDishActivity.class);
