@@ -115,7 +115,14 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         Log.d(TAG, "onRestart");
 
+
     }
+//
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//
+//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -138,16 +145,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-            } else {
-
-                if (response == null) {
-                } else {
-                    try {
-                        Toast.makeText(this, response.getError().getErrorCode(), Toast.LENGTH_SHORT).show();
-                    } catch (NullPointerException e) {
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+            }
+            else if (resultCode == RESULT_CANCELED){
+                startActivity(new Intent(this,MainActivity.class));
+                finish();
             }
         }
     }
