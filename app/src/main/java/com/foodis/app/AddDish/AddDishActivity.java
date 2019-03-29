@@ -147,7 +147,7 @@ public class AddDishActivity extends AppCompatActivity {
 
         @Override
         public int getCount(){
-            return 4;
+            return 3;
         }
 
         @Override
@@ -159,7 +159,6 @@ public class AddDishActivity extends AppCompatActivity {
                     return new ByGramsOrByPiecesFragment();
                 case 2:
                     return new FoodCategoryFragment();
-
             }
             return null;
         }
