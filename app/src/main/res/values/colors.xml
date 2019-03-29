@@ -15,7 +15,7 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
-    <color name="colorPrimary">#159de2</color>
+    <color name="colorPrimary">#006400</color>
     <color name="myorange">#f9ba48</color>
     <color name="colorPrimaryDarkblue">#2377af</color>
 
@@ -25,7 +25,7 @@
     <color name="gray_loww">#afafaf</color>
     <color name="graisboro">#ecdfe5</color>
 
-    <color name="colorAccent">#0f86a3</color>
+    <color name="colorAccent">#228B22</color>
     <color name="colorAccent2">#0aacd1</color>
     <color name="colorPrimaryPeachDark">#d19e8c</color>
     <color name="trans">#00ffffff</color>

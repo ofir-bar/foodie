@@ -159,8 +159,6 @@ public class AddDishActivity extends AppCompatActivity {
                     return new ByGramsOrByPiecesFragment();
                 case 2:
                     return new FoodCategoryFragment();
-                case 3:
-                    return new MayContainFragment();
 
             }
             return null;
@@ -177,7 +175,7 @@ public class AddDishActivity extends AppCompatActivity {
 //        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 //        ft.replace(id, fragment);
 //        ft.commit();
-        if(item==3){
+        if(item==2){
             finish();
         }else{
             pager.setCurrentItem(item);
