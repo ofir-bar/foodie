@@ -45,7 +45,7 @@ public class DishesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        /* RecyclerView adaptation starts */
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_dishes, container, false);
 
@@ -62,6 +62,7 @@ public class DishesFragment extends Fragment {
         rc.setAdapter(dishAdapter);
 
         loadDishes();
+        /* RecyclerView adaptation ends */
 
         return rootView;
     }
@@ -125,10 +126,6 @@ public class DishesFragment extends Fragment {
 
             }
         });
-
-
-
-
     }
 
 }

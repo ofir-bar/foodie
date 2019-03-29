@@ -10,6 +10,9 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,15 +23,19 @@ import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.foodis.app.AddDish.AddDishActivity;
+import com.foodis.app.DishAdapter;
 import com.foodis.app.FirebaseDB;
 import com.foodis.app.MainActivity;
+import com.foodis.app.data_models.Dish;
 import com.foodis.app.data_models.Seller;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 import com.foodis.app.R;
@@ -52,6 +59,11 @@ public class SellerFragment extends Fragment {
     public static final int RC_SIGN_IN = 1;
     String sellerName;
     String sellerUid;
+
+
+    private List<Dish> dishList;
+    private DishAdapter dishAdapter;
+    private RecyclerView rc;
 
     public SellerFragment() {
         // Required empty public constructor
@@ -92,7 +104,20 @@ public class SellerFragment extends Fragment {
         });
 
 
+        /* RecyclerView adaptation starts */
+        RecyclerView rc = (RecyclerView) v.findViewById(R.id.rc_dishes);
+        rc.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        dishList = new ArrayList<>();
+
+        dishAdapter = new DishAdapter(dishList);
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rc.getContext(),
+                new LinearLayoutManager(getActivity()).getOrientation());
+        rc.addItemDecoration(dividerItemDecoration);
+        rc.setAdapter(dishAdapter);
+
+        /* RecyclerView adaptation ends */
 
         return v;
     }
@@ -142,6 +167,8 @@ public class SellerFragment extends Fragment {
                 sellerAddressValue.setText(seller.address);
                 sellerCityValue.setText(seller.city);
                 sellerUsernameValue.setText(seller.name);
+
+                loadDishes();
             }
 
             @Override
@@ -151,6 +178,36 @@ public class SellerFragment extends Fragment {
         });
     }
 
+    private void loadDishes() {
+        FirebaseDB.getSellersRef().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                List<Seller> sellersList = new ArrayList<>();
+                for(DataSnapshot data: dataSnapshot.getChildren()){
+                    sellersList.add(data.getValue(Seller.class));
+                }
+
+                // Add only the dishes of this seller to the list to show the seller
+                for(Seller seller: sellersList){
+                    if(seller.dishList == null || seller.dishList.isEmpty() || seller.name == null || !seller.name.equals(sellerName)) continue;
+
+                    dishList.addAll(seller.dishList.values());
+                }
+
+                dishAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+    }
 
     public void onResume(){
         Log.d(TAG, "onResume");
