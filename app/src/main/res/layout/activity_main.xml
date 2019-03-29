@@ -11,7 +11,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:itemBackground="@color/Orange"
+        app:itemBackground="@color/DarkGreen"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
@@ -22,6 +22,7 @@
 
     <FrameLayout
         android:id="@+id/main_activity_fragment"
+        android:background="@drawable/background_gradient"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"

@@ -2,11 +2,13 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_gradient"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailedDishActivity">
 
     <TextView
+        android:textColor="#FFFFFF"
         android:id="@+id/dish_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,11 +33,12 @@
 
     <TextView
         android:id="@+id/dish_details"
+        android:textColor="#FFFFFF"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Dish Details"
+        android:text="@string/dummy_text"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline_85_percent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,6 +48,7 @@
     <!-- Dish Price Details -->
     <LinearLayout
         android:id="@+id/linearLayout"
+        android:textColor="#FFFFFF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -57,6 +61,7 @@
 
         <TextView
             android:id="@+id/dish_price_title"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Price:"
@@ -66,6 +71,7 @@
 
         <TextView
             android:id="@+id/dish_price_value"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1$"
@@ -76,17 +82,26 @@
     </LinearLayout>
     <!-- Dish Price Details -->
 
+
     <Button
         android:id="@+id/checkout_dish"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:text="CHECKOUT"
+        android:textSize="22sp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_85_percent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_15_percent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline_15_percent"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:background="@drawable/checkout_button"
+        android:shadowColor="#FFFFFF"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_15_percent"
@@ -120,6 +135,7 @@
 
         <TextView
             android:id="@+id/dish_weight_or_pieces_title"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total:"
@@ -128,6 +144,7 @@
 
         <TextView
             android:id="@+id/dish_weight_or_pieces_value"
+            android:textColor="#FFFFFF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Dish Weight/Pieces"
