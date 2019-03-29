@@ -54,7 +54,7 @@ public class DishesFragment extends Fragment {
 
         dishList = new ArrayList<>();
 
-        dishAdapter = new DishAdapter(dishList);
+        dishAdapter = new DishAdapter(dishList, getContext());
 
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rc.getContext(),
                 new LinearLayoutManager(getActivity()).getOrientation());
