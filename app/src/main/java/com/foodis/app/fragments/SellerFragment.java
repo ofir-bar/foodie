@@ -229,7 +229,7 @@ public class SellerFragment extends Fragment {
     private void addNewDish(){
         Toast.makeText(this.getContext(), "Added new dish", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), AddDishActivity.class);
-        intent.putExtra("numOfNextDish", 4);
+        intent.putExtra("numOfNextDish", dishList.size()+1);
         intent.putExtra("userUid", sellerUid);
         intent.putExtra("userName", sellerName);
         //////

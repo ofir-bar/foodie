@@ -32,7 +32,7 @@ public class DetailedDishActivity extends AppCompatActivity {
         String DishDetailsData =(String)getIntent().getExtras().get(EXTRA_DETAILS);
         int DishPiecesData = getIntent().getIntExtra(EXTRA_PIECES,0);
 
-        int DishPriceData =getIntent().getIntExtra(EXTRA_PRICE,0);
+        double DishPriceData =getIntent().getDoubleExtra(EXTRA_PRICE,0f);
         int DishWeightData =getIntent().getIntExtra(EXTRA_WEIGHT, 0);
 
         dish_price_value = findViewById(R.id.dish_price_value);
