@@ -232,7 +232,7 @@ public class SellerFragment extends Fragment {
         intent.putExtra("numOfNextDish", dishList.size()+1);
         intent.putExtra("userUid", sellerUid);
         intent.putExtra("userName", sellerName);
-        //////
+        ////// cxcxcxcxc
         startActivity(intent);
     }
 
